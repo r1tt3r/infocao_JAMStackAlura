@@ -1,26 +1,20 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-`
+import { ThemeProvider } from "styled-components";
+import RacaWrapper from "../src/providers/Raca";
+import GlobalStyle, { colors } from "../src/theme/GlobalStyles";
 
 const theme = {
-  colors: {
-    primary: '#0070f3',
-  },
-}
+  colors,
+};
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <RacaWrapper>
+          <GlobalStyle />
+          <Component {...pageProps} />
+        </RacaWrapper>
       </ThemeProvider>
     </>
-  )
+  );
 }
